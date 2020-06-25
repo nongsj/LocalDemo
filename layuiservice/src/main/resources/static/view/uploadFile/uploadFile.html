@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+		<title>附件目录</title>
+		<link href="../../library/layui/css/layui.css" rel="stylesheet" /> 
+		<link href="../../css/file/file.css" rel="stylesheet" />
+	</head>
+	<body>
+	<div style="margin-left: 20px">
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+				<legend>附件</legend>
+			</fieldset>
+		<div style="margin-left: 15px;margin-bottom: 10px;">
+				<form id="fileForm" name="fileForm" enctype="multipart/form-data">
+					<input class="form-control" type="file" name="file" id="file"  style="display: none;"/>
+					<button id="uploadBtn" class="layui-btn" type="button" >文件上传</button>
+				</form>
+				<div class="progress">
+					<div class="layui-progress" lay-filter="fileupload-progress">
+						<div class="layui-progress-bar" id="progress"  lay-percent="0%"></div>
+					</div>
+				</div>
+		</div>
+		<div id="attachment" class="div-attachment">
+				<div v-for="fileItem in files" class="layui-card">
+					<div class="layui-card-body">
+						<div class="layui-row">
+							<div class="layui-col-xs9">
+								 <a><img class="img-file" :src="fileItem.icon" /><label class="attachment-filename">{{fileItem.filename}}</label></a> 
+							</div>
+							<div class="layui-col-xs3">
+								<div class="fileOperating">
+								<i class="downloadFile" @click="downloadFile(fileItem)" :path="fileItem.filepath" :name="fileItem.filename"></i>
+								<i class="fileDel" @click="btnRemoveFile(fileItem)" :fileid="fileItem.id"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	<script src="../../library/jquery/jquery-3.4.1.min.js"></script>
+	<script src="../../library/layui/layui.js"></script>
+	<script src="../../library/vue/vue.min.js"></script>
+	<script src="../../js/bms.js"></script>
+	<script src="../../js/file/uploadFile.js"></script>
+	</body>
+</html>

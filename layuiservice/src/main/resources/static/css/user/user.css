@@ -1,0 +1,17 @@
+#headers{
+	margin-left:20px;
+	margin-top:20px;
+}
+
+#txt-search{
+	float: left;
+	width: 180px;
+}
+
+#search-btn{
+	float: left;
+}
+
+#add{
+	margin-top:20px;
+}

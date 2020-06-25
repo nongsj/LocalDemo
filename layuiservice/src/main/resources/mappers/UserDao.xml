@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.layui.mapper.UserDao">
+    <resultMap id="BaseResultMap" type="com.layui.entity.User">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="user_accounts" jdbcType="VARCHAR" property="userAccounts"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_job_number" jdbcType="VARCHAR" property="userJobNumber"/>
+        <result column="user_job_number_seq" jdbcType="VARCHAR" property="userJobNumberSeq"/>
+        <result column="list_number" jdbcType="SMALLINT" property="listNumber"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="user_name_py" jdbcType="VARCHAR" property="userNamePy"/>
+        <result column="user_name_zm" jdbcType="VARCHAR" property="userNameZm"/>
+        <result column="user_position" jdbcType="BIGINT" property="userPosition"/>
+        <result column="user_job_category" jdbcType="BIGINT" property="userJobCategory"/>
+        <result column="user_workplace" jdbcType="BIGINT" property="userWorkplace"/>
+        <result column="user_city" jdbcType="BIGINT" property="userCity"/>
+        <result column="user_area" jdbcType="BIGINT" property="userArea"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt"/>
+        <result column="is_lock" jdbcType="TINYINT" property="isLock"/>
+        <result column="change_pwd" jdbcType="TINYINT" property="changePwd"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id,user_accounts,user_name,user_job_number,user_job_number_seq,list_number,password,user_name_py,user_name_zm,user_position,user_job_category,user_workplace,user_city,user_area,created_at,updated_at,deleted_at,is_lock,change_pwd
+    </sql>
+    
+       <insert id="insertSelective" parameterType="com.layui.entity.User">
+        insert into users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+            id,
+            </if>
+            <if test="userAccounts != null">
+            user_accounts,
+            </if>
+            <if test="userName != null">
+            user_name,
+            </if>
+            <if test="userJobNumber != null">
+            user_job_number,
+            </if>
+            <if test="userJobNumberSeq != null">
+            user_job_number_seq,
+            </if>
+            <if test="listNumber != null">
+            list_number,
+            </if>
+            <if test="password != null">
+            password,
+            </if>
+            <if test="userNamePy != null">
+            user_name_py,
+            </if>
+            <if test="userNameZm != null">
+            user_name_zm,
+            </if>
+            <if test="userPosition != null">
+            user_position,
+            </if>
+            <if test="userJobCategory != null">
+            user_job_category,
+            </if>
+            <if test="userWorkplace != null">
+            user_workplace,
+            </if>
+            <if test="userCity != null">
+            user_city,
+            </if>
+            <if test="userArea != null">
+            user_area,
+            </if>
+            <if test="createdAt != null">
+            created_at,
+            </if>
+            <if test="updatedAt != null">
+            updated_at,
+            </if>
+            <if test="deletedAt != null">
+            deleted_at,
+            </if>
+            <if test="isLock != null">
+            is_lock,
+            </if>
+            <if test="changePwd != null">
+            change_pwd,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+            #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userAccounts != null">
+            #{userAccounts,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+            #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="userJobNumber != null">
+            #{userJobNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="userJobNumberSeq != null">
+            #{userJobNumberSeq,jdbcType=VARCHAR},
+            </if>
+            <if test="listNumber != null">
+            #{listNumber,jdbcType=SMALLINT},
+            </if>
+            <if test="password != null">
+            #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="userNamePy != null">
+            #{userNamePy,jdbcType=VARCHAR},
+            </if>
+            <if test="userNameZm != null">
+            #{userNameZm,jdbcType=VARCHAR},
+            </if>
+            <if test="userPosition != null">
+            #{userPosition,jdbcType=BIGINT},
+            </if>
+            <if test="userJobCategory != null">
+            #{userJobCategory,jdbcType=BIGINT},
+            </if>
+            <if test="userWorkplace != null">
+            #{userWorkplace,jdbcType=BIGINT},
+            </if>
+            <if test="userCity != null">
+            #{userCity,jdbcType=BIGINT},
+            </if>
+            <if test="userArea != null">
+            #{userArea,jdbcType=BIGINT},
+            </if>
+            <if test="createdAt != null">
+            #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+            #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deletedAt != null">
+            #{deletedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isLock != null">
+            #{isLock,jdbcType=TINYINT},
+            </if>
+            <if test="changePwd != null">
+            #{changePwd,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    
+     <delete id="deleteByKey" parameterType="String">
+        delete from users
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    
+    <select id="findByKey" parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from users
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+   
+       <select id="findList" parameterType="com.layui.entity.User" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from users
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="id != null and id != ''">
+                and id = #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="userAccounts != null and userAccounts != '' ">
+                and user_accounts = #{userAccounts,jdbcType=VARCHAR}
+            </if>
+            <if test="userName != null and userName != '' ">
+                and user_name like "%"#{userName}"%"
+            </if>
+            <if test="userJobNumber != null">
+                and user_job_number = #{userJobNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="userJobNumberSeq != null">
+                and user_job_number_seq = #{userJobNumberSeq,jdbcType=VARCHAR}
+            </if>
+            <if test="listNumber != null">
+                and list_number = #{listNumber,jdbcType=SMALLINT}
+            </if>
+            <if test="password != null">
+                and password = #{password,jdbcType=VARCHAR}
+            </if>
+            <if test="userNamePy != null">
+                and user_name_py = #{userNamePy,jdbcType=VARCHAR}
+            </if>
+            <if test="userNameZm != null">
+                and user_name_zm = #{userNameZm,jdbcType=VARCHAR}
+            </if>
+            <if test="userPosition != null">
+                and user_position = #{userPosition,jdbcType=BIGINT}
+            </if>
+            <if test="userJobCategory != null">
+                and user_job_category = #{userJobCategory,jdbcType=BIGINT}
+            </if>
+            <if test="userWorkplace != null">
+                and user_workplace = #{userWorkplace,jdbcType=BIGINT}
+            </if>
+            <if test="userCity != null">
+                and user_city = #{userCity,jdbcType=BIGINT}
+            </if>
+            <if test="userArea != null">
+                and user_area = #{userArea,jdbcType=BIGINT}
+            </if>
+            <if test="sTime != null and sTime != '' and eTime != null and eTime != ''">
+            	AND
+            		DATE_FORMAT(#{sTime},"%Y-%m-%d") &lt;= DATE_FORMAT(created_at,"%Y-%m-%d")
+				AND
+					DATE_FORMAT(#{eTime},"%Y-%m-%d") &gt;= DATE_FORMAT(created_at,"%Y-%m-%d")
+            </if>
+            <if test="updatedAt != null">
+                and updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="deletedAt != null">
+                and deleted_at = #{deletedAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="isLock != null">
+                and is_lock = #{isLock,jdbcType=TINYINT}
+            </if>
+            <if test="changePwd != null">
+                and change_pwd = #{changePwd,jdbcType=TINYINT}
+            </if>
+        </trim>
+    </select>
+
+    <update id="updateByKeySelective" parameterType="com.layui.entity.User">
+        update users
+        <trim prefix="set" prefixOverrides=",">
+                <if test="id != null">
+                    ,id = #{id,jdbcType=VARCHAR}
+                </if>
+                <if test="userAccounts != null">
+                    ,user_accounts = #{userAccounts,jdbcType=VARCHAR}
+                </if>
+                <if test="userName != null">
+                    ,user_name = #{userName,jdbcType=VARCHAR}
+                </if>
+                <if test="userJobNumber != null">
+                    ,user_job_number = #{userJobNumber,jdbcType=VARCHAR}
+                </if>
+                <if test="userJobNumberSeq != null">
+                    ,user_job_number_seq = #{userJobNumberSeq,jdbcType=VARCHAR}
+                </if>
+                <if test="listNumber != null">
+                    ,list_number = #{listNumber,jdbcType=SMALLINT}
+                </if>
+                <if test="password != null">
+                    ,password = #{password,jdbcType=VARCHAR}
+                </if>
+                <if test="userNamePy != null">
+                    ,user_name_py = #{userNamePy,jdbcType=VARCHAR}
+                </if>
+                <if test="userNameZm != null">
+                    ,user_name_zm = #{userNameZm,jdbcType=VARCHAR}
+                </if>
+                <if test="userPosition != null">
+                    ,user_position = #{userPosition,jdbcType=BIGINT}
+                </if>
+                <if test="userJobCategory != null">
+                    ,user_job_category = #{userJobCategory,jdbcType=BIGINT}
+                </if>
+                <if test="userWorkplace != null">
+                    ,user_workplace = #{userWorkplace,jdbcType=BIGINT}
+                </if>
+                <if test="userCity != null">
+                    ,user_city = #{userCity,jdbcType=BIGINT}
+                </if>
+                <if test="userArea != null">
+                    ,user_area = #{userArea,jdbcType=BIGINT}
+                </if>
+                <if test="createdAt != null">
+                    ,created_at = #{createdAt,jdbcType=TIMESTAMP}
+                </if>
+                <if test="updatedAt != null">
+                    ,updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+                </if>
+                <if test="deletedAt != null">
+                    ,deleted_at = #{deletedAt,jdbcType=TIMESTAMP}
+                </if>
+                <if test="isLock != null">
+                    ,is_lock = #{isLock,jdbcType=TINYINT}
+                </if>
+                <if test="changePwd != null">
+                    ,change_pwd = #{changePwd,jdbcType=TINYINT}
+                </if>
+        </trim>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+
+	<select id="excelData" resultType="java.util.HashMap">
+        select id,user_name as userName from users
+    </select>
+</mapper>

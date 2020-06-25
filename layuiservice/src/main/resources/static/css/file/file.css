@@ -1,0 +1,43 @@
+.div-attachment .layui-card{
+    margin-bottom: 0;
+    box-shadow: none;
+    cursor: pointer;
+}
+.div-attachment .layui-card:hover{
+    background-color: #f9fbfc;
+}
+
+.fileOperating{
+    float:right;
+}
+.fileOperating i{
+    padding:4px;
+    color: #3c83b6;
+    cursor: pointer;
+}
+.fileOperating i:hover {
+    border: 1px solid #3c83b6;
+    padding: 3px;
+    border-radius: 13px;
+}
+
+.downloadFile{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-image: url(../../images/file/downloadIcon.png);
+	background-position: center center;
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+}
+
+
+.fileDel{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-image: url(../../images/file/delIcon.png);
+	background-position: center center;
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户列表</title>
+<link rel="shortcut icon" href="#"/>
+<link href="../../library/layui/css/layui.css" rel="stylesheet" />
+<!-- <link href="../../css/user.css" rel="stylesheet" /> -->
+</head>
+<body>
+<header id = "headers">
+    
+</header>
+<footer>
+	<div>
+		<table class="layui-hide" id="complex_table" lay-filter="complex_table"></table>
+	</div>
+</footer>
+<article>
+	
+</article>
+
+	<script src="../../library/jquery/jquery-3.4.1.min.js"></script>
+	<script src="../../library/layui/layui.js"></script>
+	<script src="../../js/bms.js"></script>
+	<script src="../../js/user/complex_table.js"></script>
+<script type="text/html" id="bar-btn">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+</body>
+</html>
+<div id="add" style="display: none;">
+<form class="layui-form layui-form-pane" action="" id = "user-form" lay-filter="resultForm">
+  <div class="layui-form-item">
+    <label class="layui-form-label">用户id</label>
+    <div class="layui-input-block">
+      <input type="text" name="userId"  placeholder="请输入id" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">姓名</label>
+    <div class="layui-input-block">
+      <input type="text" name="userName"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  </form>
+</div>
+
+

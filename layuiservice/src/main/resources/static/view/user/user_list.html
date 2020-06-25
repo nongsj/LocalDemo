@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户列表</title>
+<link rel="shortcut icon" href="#"/>
+<link href="../../library/layui/css/layui.css" rel="stylesheet" />
+<link href="../../css/user/user.css" rel="stylesheet" />
+</head>
+<body>
+<header id = "headers">
+    <div class="layui-row layui-col-space5">
+    <div class="layui-col-md6">
+      <div class="grid-demo grid-demo-bg1">
+      <button class="layui-btn" id="add-btn">新增</button>
+      <button class="layui-btn" id="batch-del-btn">批量删除</button> 
+      <button class="layui-btn layui-btn-primary" data-type="reload" id="precise-query-btn">
+		<i class="layui-icon layui-icon-triangle-d"></i>高级查询
+	  </button>
+	  <button class="layui-btn" id="exportExcel">导出excel</button>
+	  <button class="layui-btn" id="importExcel">导入excel</button>
+      </div>
+    </div>
+    
+    <div class="layui-col-md6">
+      <div class="grid-demo grid-demo-bg1">
+      <input  id="txt-search" type="text" lay-verify="required" placeholder="请输入名字" autocomplete="off" class="layui-input">
+      <button  class="layui-btn" id="search-btn" data-type="getInfo" >搜索</button>
+      </div>
+    </div>
+  </div>
+  <!-- 高级查询开始 -->
+    <div class="resultSeniorQuery" style="display: none;margin-top:15px;">
+		<div class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">用户id</label>
+					<div class="layui-input-inline">
+						<input class="layui-input" name="userId"
+							id="userId" autocomplete="off">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">用户姓名</label>
+					<div class="layui-input-inline">
+						<input class="layui-input" name="userName" id="userName"
+							autocomplete="off">
+					</div>
+				</div>
+				<!-- <div class="layui-inline">
+					<label class="layui-form-label">会议类型</label>
+					<div class="layui-input-inline">
+						<select name="txtMeetingType" lay-filter="meetingType"
+							id="txtMeetingType">
+							<option value="264">规划科科务会</option>
+							<option value="205">审批办业务会</option>
+							<option value="2">市局业务例会</option>
+							<option value="364">控规调整内部联席会</option>
+						</select>
+					</div>
+				</div> -->
+			</div>
+			
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">用户账号</label>
+					<div class="layui-input-inline">
+						<input class="layui-input" name="userAccounts"
+							id="userAccounts" autocomplete="off">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">创建时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input" name="createdAt"
+							id="createdAt" placeholder="至" style="text-align: center;">
+					</div>
+					<button class="layui-btn" lay-submit="" id="user-Senior-Search"
+						data-type="getInfo" style="float: right;">搜索</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 高级查询结束 -->
+</header>
+<footer>
+	<div>
+		<table class="layui-hide" id="user-table" lay-filter="user"></table>
+	</div>
+	<div style="display: none;">
+				<form id="fileForm" name="fileForm" enctype="multipart/form-data">
+					<input class="form-control" type="file" name="file" id="file"  />
+				</form>
+		</div>
+</footer>
+<article>
+	</div>
+			<div id="user-page"></div>
+		</div>	
+</article>
+
+	<script src="../../library/jquery/jquery-3.4.1.min.js"></script>
+	<script src="../../library/layui/layui.js"></script>
+	<script src="../../js/bms.js"></script>
+	<script src="../../js/user/user.js"></script>
+<script type="text/html" id="bar-btn">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+</body>
+</html>
+<div id="add" style="display: none;">
+<form class="layui-form layui-form-pane" action="" id = "user-form" lay-filter="resultForm">
+  <div class="layui-form-item">
+    <label class="layui-form-label">用户id</label>
+    <div class="layui-input-block">
+      <input type="text" name="userId"  placeholder="请输入id" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">姓名</label>
+    <div class="layui-input-block">
+      <input type="text" name="userName"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  </form>
+</div>
+
+
